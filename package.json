@@ -1,0 +1,51 @@
+{
+  "config": {
+    "awsIp": "ec2-user@34.198.158.4",
+    "awsKey": "shop.pem"
+  },
+  "scripts": {
+    "database": "npm --prefix database run start",
+    "databaseCleanStart": "npm --prefix database run cleanStart",
+    "backend": "npm --prefix backend run start:dev",
+    "frontend": "npm --prefix frontend run start",
+    "removeBackendContainer": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% docker rm -f server-dneros",
+    "removeBackendContainer:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} docker rm -f server-dneros",
+    "removeDatabasecontainer": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% docker rm -f database-dneros",
+    "removeDatabasecontainer:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} docker rm -f database-dneros",
+    "removeBackendImage": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% docker rmi -f dneros-server",
+    "removeBackendImage:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} docker rmi -f dneros-server",
+    "removeDatabaseImage": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% docker rmi -f mysql",
+    "removeDatabaseImage:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} docker rmi -f mysql",
+    "removeBackendFolder": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% rm -r -f dneros/backend",
+    "removeBackendFolder:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} rm -r -f dneros/backend",
+    "removeDatabaseFolder": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% rm -r -f dneros/database",
+    "removeDatabaseFolder:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} rm -r -f dneros/database",
+    "recreateBackendFolder": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% mkdir -p dneros/backend",
+    "recreateBackendFolder:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} mkdir -p dneros/backend",
+    "recreateDatabaseFolder": "ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% mkdir -p dneros/database",
+    "recreateDatabaseFolder:unix": "ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} mkdir -p dneros/database",
+    "uploadBackend": "scp -r -i %npm_package_config_awsKey% ./backend/environments ./backend/src ./backend/Dockerfile ./backend/*.json %npm_package_config_awsIp%:~/dneros/backend",
+    "uploadBackend:unix": "scp -r -i ${npm_package_config_awsKey} ./backend/environments ./backend/src ./backend/Dockerfile ./backend/*.json ${npm_package_config_awsIp}:~/dneros/backend",
+    "uploadDatabase": "scp -r -i %npm_package_config_awsKey% ./database/init %npm_package_config_awsIp%:~/dneros/database",
+    "uploadDatabase:unix": "scp -r -i ${npm_package_config_awsKey} ./database/init ${npm_package_config_awsIp}:~/dneros/database",
+    "uploadDockerYamlConfig": "scp -i %npm_package_config_awsKey% ./docker-compose.yml %npm_package_config_awsIp%:~/dneros",
+    "uploadDockerYamlConfig:unix": "scp -i ${npm_package_config_awsKey} ./docker-compose.yml ${npm_package_config_awsIp}:~/dneros",
+    "deployBackend": "npm run removeBackendContainer && npm run removeBackendImage && npm run removeBackendFolder && npm run recreateBackendFolder && npm run uploadBackend",
+    "deployBackend:unix": "npm run removeBackendContainer:unix && npm run removeBackendImage:unix && npm run removeBackendFolder:unix && npm run recreateBackendFolder:unix && npm run uploadBackend:unix",
+    "deployDatabase": "npm run removeDatabasecontainer && npm run removeDatabaseImage && npm run removeDatabaseFolder && npm run recreateDatabaseFolder && npm run uploadDatabase",
+    "deployDatabase:unix": "npm run removeDatabasecontainer:unix && npm run removeDatabaseImage:unix && npm run removeDatabaseFolder:unix && npm run recreateDatabaseFolder:unix && npm run uploadDatabase:unix",
+    "deployCleanInstall": "npm run deployBackend && npm run deployDatabase",
+    "deployCleanInstall:unix": "npm run deployBackend:unix && npm run deployDatabase:unix",
+    "startAwsInstance": "npm run uploadDockerYamlConfig && ssh -i %npm_package_config_awsKey% %npm_package_config_awsIp% docker-compose -f ./dneros/docker-compose.yml up -d",
+    "startAwsInstance:unix": "npm run uploadDockerYamlConfig:unix && ssh -i ${npm_package_config_awsKey} ${npm_package_config_awsIp} docker-compose -f ./dneros/docker-compose.yml up -d",
+    "deploy:run:be": "npm run deployBackend && npm run startAwsInstance",
+    "deploy:run:be:unix": "npm run deployBackend:unix && npm run startAwsInstance:unix",
+    "deploy:run:db": "npm run deployDatabase && npm run startAwsInstance",
+    "deploy:run:db:unix": "npm run deployDatabase:unix && npm run startAwsInstance:unix",
+    "deploy:run:clean:install": "npm run deployCleanInstall && npm run startAwsInstance",
+    "deploy:run:clean:install:unix": "npm run deployCleanInstall:unix && npm run startAwsInstance:unix"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}

@@ -1,0 +1,37 @@
+version: '3.6'
+
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    networks:
+      shop-app:
+        ipv4_address: 10.120.4.2
+    container_name: database-shop
+    volumes:
+          - ./database/init:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_USER=admin
+      - MYSQL_DATABASE=shop
+  shop:
+    image: shop-server
+    build: ./backend
+    depends_on:
+      - mysql
+    ports:
+      - 3000:3000
+    networks:
+      shop-app:
+        ipv4_address: 10.120.4.3
+    container_name: server-shop
+
+networks:
+  shop-app:
+    name: shop-app
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.120.4.0/24

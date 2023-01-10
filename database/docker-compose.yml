@@ -1,0 +1,15 @@
+version: '3.6'
+
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    container_name: database-shop
+    volumes:
+          - ./init:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_USER=admin
+      - MYSQL_DATABASE=shop

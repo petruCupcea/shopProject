@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "cleanStart": "docker rm database-shop -f && docker-compose up",
+    "start": "docker-compose up"
+  }
+}
