@@ -20,4 +20,4 @@ INSERT INTO `shop`.`categories` (`name`, `type`, `groupId`) VALUES
             ('Tehnică de uz casnic', 'group', NULL),
             ('Totul pentru sărbători', 'group', NULL),
             ('Lumea copiilor', 'group', NULL),
-            ('Totul pentru casă și oficiu', 'group', NULL),
+            ('Totul pentru casă și oficiu', 'group', NULL)
