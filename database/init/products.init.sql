@@ -1,8 +1,2 @@
-CREATE TABLE `shop`.`categories` (
-    `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(60) NOT NULL,
-    `description` VARCHAR(1024) NOT NULL,
-    `imageLink`
-    `groupId` int NOT NULL,
-    `subcategoryId` int NOT NULL
-);
+INSERT INTO `shop`.`products` (`name`, `description`, `price`,`currency`, `groupId`, `subcategoryId`) VALUES
+            ('BMW 5 Series',  'Bmw 520 Diesel x drive  4x4  sport line. Starea unui automobil nou atat estetic cat si tehnic. Completatie foarte bogata, scaune sport ,cauciucuri noi de iarna  ,cauciucuri de vara, incalzire scaune, 2 chei si  toata deservirea la dealer.','29 500', 'EUR', 1, 34)
