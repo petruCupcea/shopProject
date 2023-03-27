@@ -7,10 +7,10 @@ services:
       - 3306:3306
     container_name: database-shop
     volumes:
+          - ./images:/media
           - ./init:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_PASSWORD=admin
       - MYSQL_USER=admin
       - MYSQL_DATABASE=shop
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
