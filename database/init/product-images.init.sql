@@ -42,4 +42,12 @@ INSERT INTO `shop`.`product_images` (`productId`, `image`) VALUES
               (8, '../../assets/images/opel2.jpeg'),
               (8, '../../assets/images/opel3.jpeg'),
               (8, '../../assets/images/opel4.jpeg'),
-              (8, '../../assets/images/opel5.jpeg')
+              (8, '../../assets/images/opel5.jpeg'),
+              (13, '../../assets/images/12pro1.jpeg'),
+              (13, '../../assets/images/12pro2.jpeg'),
+              (13, '../../assets/images/12pro3.jpeg'),
+              (13, '../../assets/images/12pro4.jpeg'),
+              (15, '../../assets/images/iphone111.jpeg'),
+              (15, '../../assets/images/iphone112.jpeg'),
+              (15, '../../assets/images/iphone113.jpeg'),
+              (15, '../../assets/images/iphone114.jpeg')
