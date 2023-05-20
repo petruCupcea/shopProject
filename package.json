@@ -44,8 +44,5 @@
     "deploy:run:db:unix": "npm run deployDatabase:unix && npm run startAwsInstance:unix",
     "deploy:run:clean:install": "npm run deployCleanInstall && npm run startAwsInstance",
     "deploy:run:clean:install:unix": "npm run deployCleanInstall:unix && npm run startAwsInstance:unix"
-  },
-  "dependencies": {
-    "bootstrap": "^5.2.3"
   }
 }

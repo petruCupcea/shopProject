@@ -6,3 +6,4 @@ CREATE TABLE `shop`.`users` (
     `phoneNumber` VARCHAR(16) NOT NULL,
     `password` VARCHAR(64) NOT NULL
 )
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
