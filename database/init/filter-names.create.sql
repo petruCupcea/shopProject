@@ -1,6 +1,7 @@
-CREATE TABLE car_brands (
+CREATE TABLE filter_names (
   id INT PRIMARY KEY,
-  markName VARCHAR(50) NOT NULL
+  markName VARCHAR(50) NOT NULL,
+  categoryId INT NOT NULL
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
