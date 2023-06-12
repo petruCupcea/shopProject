@@ -139,5 +139,7 @@ INSERT INTO `shop`.`product_images` (`productId`, `image`) VALUES
               (28, '../../assets/images/fabia2.png'),
               (28, '../../assets/images/fabia3.png'),
               (28, '../../assets/images/fabia4.png'),
-              (28, '../../assets/images/fabia5.png')
+              (28, '../../assets/images/fabia5.png'),
+              (29, '../../assets/images/nothing1.png'),
+              (29, '../../assets/images/nothing2.png')
 
